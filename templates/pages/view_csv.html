@@ -1,0 +1,40 @@
+{% extends 'base.html' %} {% block content %}
+<div class="table-container">
+  <div
+    class="d-sm-flex align-items-center justify-content-between mb-3 d-block"
+  >
+    <h4 class="my-3">Welcome {{request.user.username}}</h4>
+    <div class="button-group d-flex">
+      <a href="/compare_csv" class="btn btn-info d-flex align-items-center"
+        ><i class="bi bi-arrow-down-up"></i>&nbsp;<span>Compare CSV</span></a
+      >
+      &nbsp;&nbsp;&nbsp;
+      <a href="/upload_csv" class="btn btn-secondary d-flex align-items-center"
+        ><i class="bi bi-upload"></i>&nbsp;<span>Upload CSV</span></a
+      >
+    </div>
+  </div>
+  <ul class="list-group">
+    {% for x in csv %}
+    <li
+      class="list-group-item d-sm-flex align-items-center justify-content-between d-block"
+    >
+      <a href="{% url 'view_csv_detail_page' x.id %}">{{x.file.name}}</a>
+      <div class="d-flex align-items-center justify-content-between">
+        {% if request.user == x.author %}
+        <a
+          href="{% url 'delete_csv_page' x.id %}"
+          class="btn btn-outline-danger me-2"
+          ><i class="bi bi-trash"></i
+        ></a>
+        {% endif %}
+        <a href="{{x.file.url}}" class="btn btn-outline-primary"
+          ><i class="bi bi-download"></i
+        ></a>
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+
+{% endblock %}
