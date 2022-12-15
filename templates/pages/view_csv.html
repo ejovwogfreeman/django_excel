@@ -19,7 +19,8 @@
     <li
       class="list-group-item d-sm-flex align-items-center justify-content-between d-block"
     >
-      <a href="{% url 'view_csv_detail_page' x.id %}">{{x.file.name}}</a>
+      <!-- <a href="{% url 'view_csv_detail_page' x.id %}">{{x.file.name}}</a> -->
+      <p class="m-0 p-0">{{x.file.name}}</p>
       <div class="d-flex align-items-center justify-content-between">
         {% if request.user == x.author %}
         <a
