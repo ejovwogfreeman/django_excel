@@ -29,7 +29,7 @@ def view_csv_detail_page(request, pk):
     csv_file = File.objects.get(id=pk)
     print(csv_file.file.url)
     # df = pd.read_csv("https://excelcomp.up.railway.app/" + csv_file.file.url)
-    df = pd.read_csv("/" + csv_file.file.url)
+    df = pd.read_csv('' + csv_file.file.url)
     # print(df)
     context = {
         'df': df.to_html()
