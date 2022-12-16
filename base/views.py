@@ -50,7 +50,7 @@ def update_profile_page(request):
         form = UserUpdateForm(request.POST, request.FILES, instance = request.user)
         if form.is_valid():
             user = form.save()
-            messages.success(request, f'accouunt updated for {user.username} succefully')
+            messages.success(request, f'accouunt updated for {user.username} successfully')
             return redirect('profile_page')
     else:
         form = UserUpdateForm(instance = request.user)
@@ -66,7 +66,7 @@ def register_page(request):
         form = UserRegisterForm(request.POST)
         if form.is_valid():
             user = form.save()
-            messages.success(request, f'accouunt created for {user.username} succefully')
+            messages.success(request, f'accouunt created for {user.username} successfully')
             return redirect('login_page')
     else:
         form = UserRegisterForm()
